@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package core.v1;
+
+option go_package = "experiment/api/core";
+
+import "k8s.io/api/core/v1/generated.proto";
+
+service Core {
+    rpc ListNamespaces(ListNamespacesRequest) returns (ListNamespacesResponse) {}
+}
+
+message ListNamespacesRequest {}
+
+message ListNamespacesResponse {
+  repeated k8s.io.api.core.v1.Namespace namespaces = 1;
+}
